@@ -1,0 +1,98 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+    <link rel="stylesheet" href="https://mindesignsystem.vercel.app/assets/shared/app.min.css"/>
+  </head>
+  <body>
+    <div class="flex">
+      <div class="child">
+        <label for={void 0}>child 1</label>
+        <p>paragrah content</p>
+      </div>
+      <div class="child">
+        <label for={void 0}>child 2</label>
+        <p>paragrah content</p>
+        <div class="dropdown">
+          <button class="dropdown-button">open dropdown</button>
+          <ul class="dropdown-content">
+            <li>content 1</li>
+            <li>content 2</li>
+            <li>content 3</li>
+            <li>content 4</li>
+          </ul>
+        </div>
+      </div>
+      <div class="child">
+        <label for={void 0}>child 3</label>
+        <p>paragrah content</p>
+      </div>
+      <div class="child">
+        <label for={void 0}>child 4</label>
+        <p>paragrah content</p>
+      </div>
+    </div>
+    <style lang="scss">
+      * {
+        box-sizing: border-box;
+        position: relative;
+        width: max-content;
+      }
+
+      @mixin commons() {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+        box-shadow: 1rem 1.5rem 0.75rem -0.5rem rgba(0, 0, 0, 0.5);
+      }
+
+      .flex {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 1rem;
+        gap: 0.5rem;
+      }
+
+      .child {
+        @include commons();
+
+        &:nth-child(1) {
+          order: 4 !important;
+          background-color: red;
+        }
+        &:nth-child(2) {
+          order: 3 !important;
+          background-color: green;
+        }
+        &:nth-child(3) {
+          order: 2 !important;
+          background-color: blue;
+        }
+        &:nth-child(4) {
+          order: 1 !important;
+          background-color: yellow;
+        }
+      }
+
+      .dropdown {
+        z-index: 1;
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: white;
+        }
+
+        .dropdown-button:focus + .dropdown-content {
+          @include commons();
+        }
+      }
+    </style>
+  </body>
+</html>
